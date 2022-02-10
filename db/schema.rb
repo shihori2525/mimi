@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_10_115902) do
+ActiveRecord::Schema.define(version: 2022_02_10_124656) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,26 +25,38 @@ ActiveRecord::Schema.define(version: 2022_02_10_115902) do
   end
 
   create_table "brands", force: :cascade do |t|
+    t.integer "item_id"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "categories", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "member_id"
+    t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "item_favorites", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "items", force: :cascade do |t|
+    t.integer "brand_id"
+    t.integer "category_id"
+    t.string "name"
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -56,23 +68,47 @@ ActiveRecord::Schema.define(version: 2022_02_10_115902) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
+    t.text "introduction"
+    t.string "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
+  create_table "post_comments", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "member_id"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "post_favorites", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "item_id"
+    t.string "image_id"
+    t.float "rate"
+    t.text "merit"
+    t.text "demerit"
+    t.text "usability"
+    t.text "cost_performance"
+    t.text "pattern"
+    t.text "other"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "relationships", force: :cascade do |t|
+    t.integer "follow_id"
+    t.integer "follower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
