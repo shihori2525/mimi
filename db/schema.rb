@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2022_02_10_124656) do
     t.integer "brand_id"
     t.integer "category_id"
     t.string "name"
-    t.string "image_id"
+    t.string "item_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
