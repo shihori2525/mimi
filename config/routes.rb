@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
 #会員側のurl変更
 scope module: 'public' do
-  resources :members,only: [:sohw,:edit,:update] do
+  resources :members,only: [:show,:edit,:update] do
     resource :relationships,only:[:create,:destroy]
      get :followings,on: :member
      get :followers,on: :member
