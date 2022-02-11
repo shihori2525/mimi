@@ -1,0 +1,11 @@
+<%= render 'layouts/admin_header' %>
+<div class="container">
+管理者側トップページ
+
+  <%= link_to "商品一覧", admin_items_path %>
+  <%= link_to "ブランド", admin_brands_path %>
+  <%= link_to "カテゴリー", admin_categories_path %>
+  <%= link_to "商品登録", new_admin_item_path %>
+  <%= link_to "ブランド登録", new_admin_brand_path %>
+  <%= link_to "カテゴリー登録", new_admin_category_path %>
+</div>
