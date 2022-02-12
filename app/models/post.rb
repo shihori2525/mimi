@@ -4,4 +4,6 @@ class Post < ApplicationRecord
 
   belongs_to :member
   belongs_to :item
+
+  attachment :image
 end

@@ -1,4 +1,6 @@
 class Admin::BrandsController < ApplicationController
+  before_action :authenticate_admin!
+
   def new
     @brand = Brand.new
   end
@@ -6,7 +8,7 @@ class Admin::BrandsController < ApplicationController
   def create
     @brand = Brand.new(brand_params)
     if @brand.save
-      redirect_to admin_brand_path(@brand)
+      redirect_to admin_brands_path
     else
       render "new"
     end
@@ -23,7 +25,7 @@ class Admin::BrandsController < ApplicationController
   def update
     @brand = Brand.find(params[:id])
     if @brand.update(brand_params)
-      redirect_to admin_brand_path(@brand)
+      redirect_to admin_brands_path
     else
       render "edit"
     end
@@ -38,7 +40,7 @@ class Admin::BrandsController < ApplicationController
 
   private
 
-  def _params
+  def brand_params
     params.require(:brand).permit(:name)
   end
 end

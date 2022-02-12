@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2022_02_10_124656) do
     t.integer "member_id"
     t.integer "item_id"
     t.string "image_id"
+    t.string "title"
     t.float "rate"
     t.text "merit"
     t.text "demerit"
