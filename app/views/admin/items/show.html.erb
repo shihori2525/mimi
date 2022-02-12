@@ -1,0 +1,22 @@
+<%= render 'layouts/admin_header' %>
+商品詳細
+<table>
+  <tbody>
+    <tr>
+      <td><%= @item.brand.name %></td>
+    </tr>
+    <tr>
+      <td><%= @item.category.name %></td>
+    </tr>
+    <tr>
+      <td><%= @item.name %></td>
+    </tr>
+    <tr>
+      <td><%= attachment_image_tag @item, :item_image, format: 'jpeg', fallback: "no_image.jpg", size: "200x200" %></td>
+    </tr>
+    <tr>
+      <td><%= link_to "編集",edit_admin_item_path(@item) %></td>
+      <td><%= link_to "削除",admin_item_path(@item) ,method: :delete,"data-confirm" => "本当に消しますか？" %></td>
+    </tr>
+  </tbody>
+</table>

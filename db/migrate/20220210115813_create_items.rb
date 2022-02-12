@@ -5,7 +5,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :brand_id
       t.integer :category_id
       t.string :name
-      t.string :image_id
+      t.string :item_image_id
 
       t.timestamps
     end

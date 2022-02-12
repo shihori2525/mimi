@@ -1,0 +1,14 @@
+<%= render 'layouts/admin_header' %>
+カテゴリー一覧
+<%= link_to "カテゴリー登録",new_admin_category_path %>
+<teble>
+  <tbody>
+    <% @categories.each do |category| %>
+    <tr>
+      <td><%= category.name %></td>
+      <td><%= link_to "編集",edit_admin_category_path(category) %></td>
+      <td><%= link_to "削除",admin_category_path(category) ,method: :delete,"data-confirm" => "本当に消しますか？" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</teble>
