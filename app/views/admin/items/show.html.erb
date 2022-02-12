@@ -1,0 +1,5 @@
+商品詳細
+<%= @item.brand.name %>
+<%= @item.name %>
+<%= attachment_image_tag item, :item_image, format: 'jpeg', fallback: "no_image.jpg", size: "40x40" %>
+<%= link_to "編集",edit_admin_item_path(item) %>

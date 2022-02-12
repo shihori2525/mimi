@@ -1,0 +1,13 @@
+ブランド一覧
+<%= link_to "ブランド登録",new_admin_brand_path %>
+<teble>
+  <tbody>
+    <% @brands.each do |brand| %>
+    <tr>
+      <td><%= brand.name %></td>
+      <td><%= link_to "編集",edit_admin_brand_path(brand) %></td>
+      <td><%= link_to "削除",admin_brand_path(brand) ,method: :delete,"data-confirm" => "本当に消しますか？" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</teble>
