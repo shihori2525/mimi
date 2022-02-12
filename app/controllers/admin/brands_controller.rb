@@ -24,6 +24,6 @@ class Admin::BrandsController < ApplicationController
   private
 
   def _params
-    params.require(:).permit(:)
+    params.require(:brand).permit(:name)
   end
 end
