@@ -21,6 +21,11 @@
           <%= link_to "編集する",edit_member_path(@member) %>
         <% end %>
       </td>
+
+      <% if current_member == @member %>
+        <td><%=link_to"いいねした投稿",post_favorites_member_path(@member) %></td>
+        <td><%=link_to"いいねした商品",item_favorites_member_path(@member) %></td>
+      <% end %>
     </tr>
     <tr>
       <td><%= @member.name %></td>

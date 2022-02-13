@@ -1,0 +1,5 @@
+<%= render 'layouts/public_header' %>
+投稿いいね一覧
+<% @favorite_posts.each do |post| %>
+<%= post.title %>
+<% end %>
