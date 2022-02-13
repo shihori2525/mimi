@@ -4,10 +4,12 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new
+    @post = Post.new(post_params)
+    @post.member_id = current_member.id
     if @post.save
       redirect_to post_path(@post)
     else
+      @member = current_member
       render "new"
     end
   end
@@ -26,7 +28,7 @@ class Public::PostsController < ApplicationController
 
   def update
     @post =  Post.find(params[:id])
-    if @post.update
+    if @post.update(post_params)
       redirect_to post_path(@post)
     else
       render "edit"
@@ -43,6 +45,6 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:member_id,:item_id,:image_id,:title,:rate,:merit,:demerit,:usability,:cost_performance,:pattern,:other)
+    params.require(:post).permit(:member_id,:item_id,:brand_id,:image,:title,:rate,:merit,:demerit,:usability,:cost_performance,:pattern,:other)
   end
 end
