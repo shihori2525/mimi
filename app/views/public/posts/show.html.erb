@@ -7,6 +7,9 @@
       <%= @post.member.name %>
       <% end %>
     </td>
+    <td id ="favorite_buttons_<%= @post.id %>">
+      <%= render 'public/post_favorites/favorite',post:@post %>
+    </td>
     <td><%= link_to "編集",edit_post_path(@post) %></td>
     <td><%= link_to "削除",post_path(@post) ,method: :delete,"data-confirm" => "本当に消しますか？" %></td>
   </tr>

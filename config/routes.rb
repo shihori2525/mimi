@@ -23,12 +23,13 @@ scope module: 'public' do
 
   resources :posts do
     resource :post_favorites,only:[:create,:destroy]
-    resource :item_favorites,only:[:create,:destroy]
 
     resources :post_comments,only:[:create,:destroy]
   end
 
-  resources :items,only:[:show]
+  resources :items,only:[:show] do
+    resource :item_favorites,only:[:create,:destroy]
+  end
 
   resources :brands,only:[:show,:index]
 

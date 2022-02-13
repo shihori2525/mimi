@@ -11,7 +11,9 @@
 
   </div>
   <div class="row">
-    <p>いいね</p>
+    <div id ="favorite_buttons_<%= @item.id %>">
+      <%= render 'public/item_favorites/favorite',item:@item %>
+    </div>
   </div>
 
   <table>
