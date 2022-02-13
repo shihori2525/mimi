@@ -1,0 +1,33 @@
+<% if members.count > 0 %>
+  <table class='table table-hover table-inverse'>
+    <tbody>
+      <% members.each do |member| %>
+      <tr>
+        <td><%= attachment_image_tag @member, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %></td>
+        <td>
+          <%= link_to member_path(member) do %>
+            <%= member.name %>
+          <% end %>
+        </td>
+        <td>フォロー:<%= member.following.count %></td>
+        <td>フォロワー:<%= member.follower.count %></td>
+        <td>
+          <% if member != current_member %>
+              <% if member.is_followed_by?(current_member) %>
+                <%=link_to member_relationships_path(member), method: :delete do %>
+                  <button type="button" class="btn btn btn-danger">フォロー中</button>
+                <% end %>
+              <% else %>
+                <%=link_to member_relationships_path(member), method: :post do %>
+                  <button type="button" class="btn btn btn-primary">フォロー</button>
+                <% end %>
+              <% end %>
+            <% end %>
+        </td>
+      </tr>
+      <% end %>
+   </tbody>
+  </table>
+<% else %>
+ <p>ユーザーはいません</p>
+<% end %>

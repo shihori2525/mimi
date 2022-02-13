@@ -17,6 +17,16 @@ class Public::MembersController < ApplicationController
     end
   end
 
+  def followings
+    member = Member.find(params[:id])
+    @members = member.followings
+  end
+
+  def followers
+    member = Member.find(params[:id])
+    @members = member.followers
+  end
+
   def post_favorites
     @member = Member.find(params[:id])
     post_favorites = PostFavorite.where(member_id: @member.id).pluck(:post_id)
