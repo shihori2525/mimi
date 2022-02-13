@@ -1,0 +1,13 @@
+<%= render 'layouts/public_header' %>
+カテゴリー一覧
+<teble>
+  <tbody>
+    <% @categories.each do |category| %>
+    <tr>
+    <%= link_to category_path(category) do %>
+      <td><%= category.name %></td>
+    <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</teble>

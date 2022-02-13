@@ -1,19 +1,10 @@
+<%= render 'layouts/public_header' %>
 ブランド詳細
+<div class="container">
 <%= @brand.name %>
-
-<table>
-  <tbody>
-    <% @brand_items.each do |brand_item| %>
-      <tr>
-        <td>
-          <%= link_to item_path(item) do %>
-           <%= attachment_image_tag brand.item, :item_image, format: 'jpeg', fallback: "no_image.jpg", size: "60x60" %>
-          <% end %>
-        </td>
-        <td>
-          <%= brand.item.name %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <table>
+    <tbody>
+      <%= render 'public/brands/detail',obj:@brand %>
+    </tbody>
+  </table>
+</div>

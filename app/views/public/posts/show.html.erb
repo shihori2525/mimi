@@ -1,4 +1,47 @@
 <%= render 'layouts/public_header' %>
 <table>
+  <tr>
+    <td><%= attachment_image_tag @post.member, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %></td>
+    <td>
+      <%= link_to member_path(@post.member) do %>
+      <%= @post.member.name %>
+      <% end %>
+    </td>
+    <td id ="favorite_buttons_<%= @post.id %>">
+      <%= render 'public/post_favorites/favorite',post:@post %>
+    </td>
+    <td><%= link_to "編集",edit_post_path(@post) %></td>
+    <td><%= link_to "削除",post_path(@post) ,method: :delete,"data-confirm" => "本当に消しますか？" %></td>
+  </tr>
+  <tr>
+    <td><%= attachment_image_tag @post, :image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %></td>
+  </tr>
+  <tr>
+    <td><%= @post.merit %></td>
+  </tr>
+  <tr>
+    <td><%= @post.demerit %></td>
+  </tr>
+  <tr>
+    <td><%= @post.usability %></td>
+  </tr>
+  <tr>
+    <td><%= @post.cost_performance %></td>
+  </tr>
+  <tr>
+    <td><%= @post.pattern %></td>
+  </tr>
+  <tr>
+    <td><%= @post.other %></td>
+  </tr>
+
+  <tr></tr>
 
 </table>
+
+<div id = "new-comment">
+  <%= render 'public/post_comments/form',post:@post,post_comment:@post_comment %>
+</div>
+<div id = "comments_area">
+  <%= render 'public/post_comments/index',post:@post %>
+</div>

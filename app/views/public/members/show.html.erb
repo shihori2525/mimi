@@ -1,0 +1,43 @@
+<%= render 'layouts/public_header' %>
+会員詳細ページ（マイページ）
+<table>
+  <tbody>
+    <tr>
+      <td><%= attachment_image_tag @member, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %></td>
+      <td>
+        <% unless current_member == @member %>
+          <% if current_member.following?(@member) %>
+          　<%= link_to member_relationships_path(@member),method: :delete do %>
+               <button type="button" class="btn btn-info">フォロー中</button>
+            <% end %>
+            <% else %>
+            <%= link_to member_relationships_path(@member),method: :post do %>
+               <button type="button" class="btn btn-primary">フォローする</button>
+            <% end %>
+           <% end %>
+        <% end %>
+
+        <% if current_member == @member %>
+          <%= link_to "編集する",edit_member_path(@member) %>
+        <% end %>
+      </td>
+
+      <% if current_member == @member %>
+        <td><%=link_to"いいねした投稿",post_favorites_member_path(@member) %></td>
+        <td><%=link_to"いいねした商品",item_favorites_member_path(@member) %></td>
+      <% end %>
+    </tr>
+    <tr>
+      <td><%= @member.name %></td>
+    </tr>
+    <tr>
+      <td><%= @member.introduction %></td>
+    </tr>
+    <tr>
+
+    </tr>
+
+    <%= render 'public/posts/posts',posts:@member.posts, post:@post %>
+
+  </tbody>
+</table>
