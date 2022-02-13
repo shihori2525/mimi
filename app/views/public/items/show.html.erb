@@ -1,0 +1,20 @@
+<%= render 'layouts/public_header' %>
+商品詳細
+<div class="container">
+  <div class="row">
+    <%= @item.brand.name %>
+    <%= @item.name %>
+  </div>
+  <div class="row">
+    <%= attachment_image_tag @item, :item_image, format: 'jpeg', fallback: "no_image.jpg", size: "200x200" %>
+    <p>口コミ評価</p>
+
+  </div>
+  <div class="row">
+    <p>いいね</p>
+  </div>
+
+  <table>
+    <%= render 'public/posts/posts',posts:@item.posts ,post:@post %>
+  </table>
+</div>

@@ -23,7 +23,7 @@
     <% if post.member == current_member %>
       <td><%= link_to '編集',edit_post_path(post)%></td>
       <td><%= link_to '削除',post_path(post),method: :delete,"data-confirm" => "本当に消しますか？"%></td>
-      <% end %>
+    <% end %>
     <td><%= link_to "もっと見る", post_path(post) %></td>
   </tr>
 <% end %>

@@ -28,7 +28,7 @@ scope module: 'public' do
     resources :post_comments,only:[:create,:destroy]
   end
 
-  resources :items,only:[:show,:index]
+  resources :items,only:[:show]
 
   resources :brands,only:[:show,:index]
 
