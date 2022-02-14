@@ -11,11 +11,7 @@ class Item < ApplicationRecord
 
   attachment :item_image
 
-  def self.search(search)
-    if search
-      Item.where(['name LIKE ?', "%#{seaech}%"])
-    else
-      Item.all
-    end
+  def self.search_for(word)
+    @items = Item.where(['name LIKE ?', "%#{word}%"])
   end
 end

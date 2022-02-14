@@ -3,12 +3,8 @@ class Brand < ApplicationRecord
 
   attachment :item_image
 
-  def self.search(search)
-    if search
-      Brand.where(['name LIKE ?', "%#{seaech}%"])
-    else
-      Item.all
-    end
+  def self.search_for(word)
+    Brand.where(['name LIKE ?', "%#{word}%"])
   end
 
 end
