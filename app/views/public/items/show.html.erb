@@ -2,7 +2,10 @@
 商品詳細
 <div class="container">
   <div class="row">
-    <%= @item.brand.name %>
+    <%= link_to brand_path(@item.brand) do %>
+      <%= @item.brand.name %>
+    <% end %>
+
     <%= @item.name %>
   </div>
   <div class="row">

@@ -1,0 +1,30 @@
+<!--検索フォーム-->
+<%= form_tag(search_path,method: :get) do %>
+  <%= text_field_tag :search %>
+  <%= select_tag 'range',options_for_select([['商品','1'],['ブランド','2']]) %>
+  <%= submit_tag '検索' %>
+ <% end %>
+
+<!--検索結果表示-->
+ <table class='table table-hover table-inverse'>
+  <% if @range == '2' %>
+    <h2>ブランド検索結果 "<%= params[:word] %>"</h2>
+     <%= render 'public/brands/index',brands:@brands %>
+
+  <% else %>
+    <h2>商品検索結果 search for "<%= params[:word] %>"</h2>
+
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.brand.name %></td>
+        <td><%= item.category.name %></td>
+
+        <td>
+        <%= link_to item_path(item) do %>
+          <%= item.name %>
+        <% end %>
+        </td>
+    <% end %>
+
+ <% end %>
+</table>
