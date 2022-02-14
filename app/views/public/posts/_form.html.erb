@@ -77,5 +77,11 @@
         <%= f.text_field :other, class: "form-control" %>
       </div>
   </div>
+  <div class="row pb-3">
+    <%= f.label :タグ, class: "col-sm-2 control-label font-weight-bold" %>
+      <div class="col-sm-10">
+        <%= f.text_field :tag_list,value: post.tag_list.join(','), class: "form-control" %>
+      </div>
+  </div>
   <%= f.submit %>
 <% end %>

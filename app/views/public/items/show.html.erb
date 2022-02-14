@@ -13,24 +13,22 @@
     <p>口コミ評価</p>
 
     口コミ<%= @item.posts.count %>件
-    <div class="average_review-rating" data-score=<%= @average_review %>></div>
+    <div id="star-rate-<%= @item.id %>"></div>
     <!--星評価-->
      <script>
-      $('.average_review-rating').raty({
+      $('#star-rate-<%= @item.id %>').raty({
         size: 36,
         starOff: '<%= asset_path('star-off.png')%>',
         starOn: <%= asset_path('star-on.png')%>',
         starHalf: '<%= asset_path('star-half.png')%>',
         half: true,
         readOnly: true,
-        score: function() {
-          return $(this).attr('data-score')
-        }
+        score: <%= @item.posts.average(:rate).to_f.round(1) %>,
       });
       </script>
     <!--星評価終わり-->
-
   </div>
+
   <div class="row">
     <div id ="favorite_buttons_<%= @item.id %>">
       <%= render 'public/item_favorites/favorite',item:@item %>

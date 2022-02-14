@@ -10,5 +10,6 @@ class Post < ApplicationRecord
   belongs_to :item
 
   attachment :image
+  acts_as_taggable
 
 end

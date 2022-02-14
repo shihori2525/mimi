@@ -16,6 +16,11 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+
+    #タグの絞り込み
+    if params[:tag_name]
+      @posts = Post.tagged_with("#{params[:tag_name]}")
+    end
   end
 
   def show
@@ -46,6 +51,6 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:member_id,:item_id,:brand_id,:image,:title,:rate,:merit,:demerit,:usability,:cost_performance,:pattern,:other)
+    params.require(:post).permit(:member_id,:item_id,:brand_id,:image,:title,:rate,:merit,:demerit,:usability,:cost_performance,:pattern,:other,:tag_list)
   end
 end
