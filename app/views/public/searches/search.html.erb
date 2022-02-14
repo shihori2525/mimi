@@ -1,0 +1,42 @@
+<%= render 'layouts/public_header' %>
+<!--検索フォーム-->
+<%= form_with url: search_path,method: :get,local: true do |f| %>
+  <%= f.text_field :word %>
+  <%= f.select :range ,options_for_select([['---選択してください---',''],['ブランド','1'],['商品','2']]) %>
+  <%= submit_tag '検索',name:nil %>
+ <% end %>
+
+<!--検索結果表示-->
+ <table class='table table-hover table-inverse'>
+  <% if @range == '1' %>
+    <h2>ブランド検索結果 "<%= @word %>"</h2>
+      <%= render 'public/brands/index',brands: @records %>
+
+  <% elsif @range == '2'%>
+  <h2>商品検索結果 "<%= @word %>"</h2>
+    <% @records.each do |record| %>
+      <tr>
+        <td>
+          <%= attachment_image_tag @item, :item_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %>
+        </td>
+        <td>
+        <%= link_to item_path(record) do %>
+          <%= record.name %>
+        <% end %>
+        </td>
+        <td>
+          <%= link_to brand_path(record) do %>
+            <%= record.brand.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to category_path(record) do %>
+            <%= record.category.name %>
+          <% end %>
+        </td>
+    <% end %>
+
+  <% else %>
+    <h5>キーワードを入力してください</h5>
+  <% end %>
+</table>

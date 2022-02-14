@@ -17,5 +17,10 @@ class Member < ApplicationRecord
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: :follower_id
   has_many :followers, through: :reverse_of_relationships, source: :following
 
+  #あるユーザーが引数で渡されたmemberにフォローされているか調べるメソッド
+  def is_followed_by?(member)
+    reverse_of_relationships.find_by(following_id: member.id).present?
+  end
+
   attachment :profile_image
 end

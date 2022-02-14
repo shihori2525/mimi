@@ -2,12 +2,33 @@
 商品詳細
 <div class="container">
   <div class="row">
-    <%= @item.brand.name %>
+    <%= link_to brand_path(@item.brand) do %>
+      <%= @item.brand.name %>
+    <% end %>
+
     <%= @item.name %>
   </div>
   <div class="row">
     <%= attachment_image_tag @item, :item_image, format: 'jpeg', fallback: "no_image.jpg", size: "200x200" %>
     <p>口コミ評価</p>
+
+    口コミ<%= @item.posts.count %>件
+    <div class="average_review-rating" data-score=<%= @average_review %>></div>
+    <!--星評価-->
+     <script>
+      $('.average_review-rating').raty({
+        size: 36,
+        starOff: '<%= asset_path('star-off.png')%>',
+        starOn: <%= asset_path('star-on.png')%>',
+        starHalf: '<%= asset_path('star-half.png')%>',
+        half: true,
+        readOnly: true,
+        score: function() {
+          return $(this).attr('data-score')
+        }
+      });
+      </script>
+    <!--星評価終わり-->
 
   </div>
   <div class="row">

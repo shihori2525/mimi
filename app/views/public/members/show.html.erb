@@ -5,16 +5,16 @@
     <tr>
       <td><%= attachment_image_tag @member, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %></td>
       <td>
-        <% unless current_member == @member %>
-          <% if current_member.following?(@member) %>
-          　<%= link_to member_relationships_path(@member),method: :delete do %>
-               <button type="button" class="btn btn-info">フォロー中</button>
+        <% if @member != current_member %>
+          <% if @member.is_followed_by?(current_member) %>
+            <%=link_to member_relationships_path(@member), method: :delete do %>
+              <button type="button" class="btn btn btn-danger">フォロー中</button>
             <% end %>
-            <% else %>
-            <%= link_to member_relationships_path(@member),method: :post do %>
-               <button type="button" class="btn btn-primary">フォローする</button>
+          <% else %>
+            <%=link_to member_relationships_path(@member), method: :post do %>
+              <button type="button" class="btn btn btn-primary">フォロー</button>
             <% end %>
-           <% end %>
+          <% end %>
         <% end %>
 
         <% if current_member == @member %>
@@ -34,7 +34,8 @@
       <td><%= @member.introduction %></td>
     </tr>
     <tr>
-
+      <td>フォロー:<%= link_to @member.followings.count,followings_member_path(@member) %></td>
+      <td>フォロワー:<%= link_to @member.followers.count,followers_member_path(@member) %></td>
     </tr>
 
     <%= render 'public/posts/posts',posts:@member.posts, post:@post %>

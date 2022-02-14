@@ -2,12 +2,6 @@
 ブランド一覧
 <teble>
   <tbody>
-    <% @brands.each do |brand| %>
-    <tr>
-    <%= link_to brand_path(brand) do %>
-      <td><%= brand.name %></td>
-    <% end %>
-    </tr>
-    <% end %>
+    <%= render 'public/brands/index',brands:@brands %>
   </tbody>
 </teble>

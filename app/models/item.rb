@@ -11,4 +11,7 @@ class Item < ApplicationRecord
 
   attachment :item_image
 
+  def self.search_for(word)
+    @items = Item.where(['name LIKE ?', "%#{word}%"])
+  end
 end

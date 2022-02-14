@@ -1,6 +1,5 @@
-<% posts.each do |post| %>
+<% favorite.each do |post| %>
   <tr>
-    <td><%= attachment_image_tag post, :image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %></td>
     <td>
       <%= link_to item_path(post.item) do %>
         <%= post.item.name %>
@@ -34,12 +33,5 @@
         <%= post.member.name %>
       <% end %>
     </td>
-    <td id ="favorite_buttons_<%= post.id %>">
-      <%= render 'public/post_favorites/favorite',post:post %>
-    </td>
-    <% if post.member == current_member %>
-      <td><%= link_to '編集',edit_post_path(post)%></td>
-      <td><%= link_to '削除',post_path(post),method: :delete,"data-confirm" => "本当に消しますか？"%></td>
-    <% end %>
   </tr>
 <% end %>
