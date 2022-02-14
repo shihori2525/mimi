@@ -1,0 +1,22 @@
+<% favorite.each do |post| %>
+  <tr>
+    <td>
+      <%= link_to item_path(post.item) do %>
+        <%= post.item.name %>
+      <% end %>
+    </td>
+
+    <td>
+      <%= link_to post_path(post) do %>
+        <%= post.title %>
+      <% end %>
+    </td>
+    <td>ほし</td>
+
+    <td>
+      <%= link_to member_path(post.member) do %>
+        <%= post.member.name %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

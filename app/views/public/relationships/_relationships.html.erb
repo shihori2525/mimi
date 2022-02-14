@@ -9,8 +9,8 @@
             <%= member.name %>
           <% end %>
         </td>
-        <td>フォロー:<%= member.following.count %></td>
-        <td>フォロワー:<%= member.follower.count %></td>
+        <td>フォロー:<%= member.followings.count %></td>
+        <td>フォロワー:<%= member.followers.count %></td>
         <td>
           <% if member != current_member %>
               <% if member.is_followed_by?(current_member) %>
