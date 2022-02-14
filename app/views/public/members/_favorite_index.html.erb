@@ -11,7 +11,22 @@
         <%= post.title %>
       <% end %>
     </td>
-    <td>ほし</td>
+    <td>
+      <!--星評価-->
+      <div id="star-rate-<%= post.id %>"></div>
+      <script>
+        $('#star-rate-<%= post.id %>').raty({
+          size :36,
+          starOff: '<%= asset_path('star-off.png')%>',
+          starOn: '<%= asset_path('star-on.png')%>',
+          starHalf: '<%= asset_path('star-half.png')%>',
+          half: true,
+          readOnly: true,
+          score: <%= post.rate %>,
+        });
+      </script>
+      <!--星評価終わり-->
+    </td>
 
     <td>
       <%= link_to member_path(post.member) do %>

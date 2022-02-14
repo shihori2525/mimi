@@ -32,7 +32,7 @@
       <!--星評価終わり-->
 
     </td>
-    <td>評価:<%= @post.rate %></td>
+    <td><%= @post.rate %></td>
   </tr>
   <tr>
     <td><%= attachment_image_tag @post, :image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %></td>
