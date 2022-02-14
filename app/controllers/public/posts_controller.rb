@@ -16,6 +16,8 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    selection = params[:keyword]
+    @post_sort = Post.sort(selection)
 
     #タグの絞り込み
     if params[:tag_name]
