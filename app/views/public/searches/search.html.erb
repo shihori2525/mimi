@@ -3,7 +3,7 @@
 <%= form_with url: search_path,method: :get,local: true do |f| %>
   <%= f.text_field :word %>
   <%= f.select :range ,options_for_select([['---選択してください---',''],['ブランド','1'],['商品','2']]) %>
-  <%= submit_tag '検索' %>
+  <%= submit_tag '検索',name:nil %>
  <% end %>
 
 <!--検索結果表示-->
@@ -12,7 +12,7 @@
     <h2>ブランド検索結果 "<%= @word %>"</h2>
       <%= render 'public/brands/index',brands: @records %>
 
-  <% else @range == "2" %>
+  <% elsif @range == '2'%>
   <h2>商品検索結果 "<%= @word %>"</h2>
     <% @records.each do |record| %>
       <tr>
@@ -35,5 +35,8 @@
           <% end %>
         </td>
     <% end %>
- <% end %>
+
+  <% else %>
+    <h5>キーワードを入力してください</h5>
+  <% end %>
 </table>
