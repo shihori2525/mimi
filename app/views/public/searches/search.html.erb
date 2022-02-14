@@ -12,7 +12,7 @@
     <h2>ブランド検索結果 "<%= @word %>"</h2>
       <%= render 'public/brands/index',brands: @records %>
 
-  <% elsif @range == "2" %>
+  <% else @range == "2" %>
   <h2>商品検索結果 "<%= @word %>"</h2>
     <% @records.each do |record| %>
       <tr>
