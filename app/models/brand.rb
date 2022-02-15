@@ -1,5 +1,7 @@
 class Brand < ApplicationRecord
-  has_many :items
+  has_many :items,dependent: :destroy
+  has_many :posts,dependent: :destroy
+
 
   attachment :item_image
 

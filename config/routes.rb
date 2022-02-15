@@ -36,6 +36,7 @@ scope module: 'public' do
   resources :categories,only:[:show,:index]
 
   get 'search' => 'searches#search'
+  get 'sort' => 'posts#sort'
 end
 
 namespace :admin do

@@ -9,6 +9,16 @@
     <% end %>
     </td>
     <td>
+      <%= link_to brand_path(item.brand) do %>
+        <%= item.brand.name %>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to category_path(item) do %>
+        <%= item.category.name %>
+      <% end %>
+    </td>
+    <td>
       <!--星評価-->
       <div id="average-star-rating-<%= item.id %>"></div>
        <script>
@@ -25,16 +35,6 @@
       <!--星評価終わり-->
 
       <%= item.posts.average(:rate).to_f.round(1) %>
-    </td>
-    <td>
-      <%= link_to brand_path(item.brand) do %>
-        <%= item.brand.name %>
-      <% end %>
-    </td>
-    <td>
-      <%= link_to category_path(item) do %>
-        <%= item.category.name %>
-      <% end %>
     </td>
   </tr>
 <% end %>

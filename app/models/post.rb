@@ -8,10 +8,12 @@ class Post < ApplicationRecord
 
   belongs_to :member
   belongs_to :item
+  belongs_to :brand
 
   attachment :image
   acts_as_taggable
 
+  #レビューのバリデーション(星１〜５)
   validates :rate, numericality: {
     less_than_or_equal_to: 5,
     greater_than_or_equal_to: 1}, presence: true
@@ -23,7 +25,7 @@ class Post < ApplicationRecord
       return all.order(created_at: :DESC)
     when 'old'
       return all.order(created_at: :ASC)
-    when 'post_favorites'
+    when 'likes'
       return find(PostFavorite.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
     end
   end

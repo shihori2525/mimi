@@ -2,6 +2,20 @@
 <div class="container">
 <table>
   <tr>
+    <td>
+      <%= link_to brand_path(@post.brand) do %>
+        <%= @post.brand.name %>
+      <% end %>
+      </td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to item_path(@post.item) do %>
+        <%= @post.item.name %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
     <td><%= attachment_image_tag @post.member, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %></td>
     <td>
       <%= link_to member_path(@post.member) do %>
