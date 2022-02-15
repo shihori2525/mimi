@@ -6,7 +6,7 @@ class Public::ItemFavoritesController < ApplicationController
   end
 
   def destroy
-    @Item = Item.find(params[:item_id])
+    @item = Item.find(params[:item_id])
     favorite = current_member.item_favorites.find_by(item_id: @item.id)
     favorite.destroy
   end
