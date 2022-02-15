@@ -37,6 +37,7 @@ scope module: 'public' do
 
   get 'search' => 'searches#search'
   get 'sort' => 'posts#sort'
+  get 'sort_item_post' =>'items#sort_item_post'
 end
 
 namespace :admin do
