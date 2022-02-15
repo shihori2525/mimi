@@ -13,8 +13,9 @@
     <p>口コミ評価</p>
 
     口コミ<%= @item.posts.count %>件
-    <div id="average-star-rating-<%= @item.id %>"></div>
+
     <!--星評価-->
+    <div id="average-star-rating-<%= @item.id %>"></div>
      <script>
       $('#average-star-rating-<%= @item.id %>').raty({
         size: 36,
@@ -27,6 +28,8 @@
       });
       </script>
     <!--星評価終わり-->
+
+    <%= @item.posts.average(:rate).to_f.round(1) %>
   </div>
 
   <div class="row">
