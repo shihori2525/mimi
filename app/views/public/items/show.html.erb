@@ -13,13 +13,13 @@
     <p>口コミ評価</p>
 
     口コミ<%= @item.posts.count %>件
-    <div id="star-rate-<%= @item.id %>"></div>
+    <div id="average-star-rating-<%= @item.id %>"></div>
     <!--星評価-->
      <script>
-      $('#star-rate-<%= @item.id %>').raty({
+      $('#average-star-rating-<%= @item.id %>').raty({
         size: 36,
         starOff: '<%= asset_path('star-off.png')%>',
-        starOn: <%= asset_path('star-on.png')%>',
+        starOn: '<%= asset_path('star-on.png')%>',
         starHalf: '<%= asset_path('star-half.png')%>',
         half: true,
         readOnly: true,
