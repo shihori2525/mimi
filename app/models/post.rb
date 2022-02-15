@@ -8,6 +8,7 @@ class Post < ApplicationRecord
 
   belongs_to :member
   belongs_to :item
+  belongs_to :brand
 
   attachment :image
   acts_as_taggable
