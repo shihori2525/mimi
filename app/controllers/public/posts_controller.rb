@@ -23,6 +23,7 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  #ソート機能
   def sort
     selection = params[:keyword]
     @sort_posts = Post.sort(selection)

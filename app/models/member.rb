@@ -8,6 +8,7 @@ class Member < ApplicationRecord
   has_many :post_comments,dependent: :destroy
   has_many :item_favorites,dependent: :destroy
   has_many :post_favorites,dependent: :destroy
+  has_many :favorited_posts, through: :post_favorites,source: :post
 
   #フォローする側から中間テーブルのアソシエーション
   has_many :relationships,foreign_key: :following_id

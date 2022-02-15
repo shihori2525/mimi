@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   def post_favorited_by?(member)
     post_favorites.where(member_id: member.id).exists?
   end
+  has_many :favorited_members,through: :post_favorites,source: :member
 
   belongs_to :member
   belongs_to :item
@@ -26,7 +27,7 @@ class Post < ApplicationRecord
     when 'old'
       return all.order(created_at: :ASC)
     when 'likes'
-      return find(PostFavorite.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
+      return includes(:favorited_members).sort {|a,b| b.favorited_members.size <=> a.favorited_members.size}
     end
   end
 
