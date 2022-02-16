@@ -29,6 +29,7 @@ scope module: 'public' do
 
   resources :items,only:[:show] do
     resource :item_favorites,only:[:create,:destroy]
+    get 'sort_item_post' =>'items#sort_item_post'
   end
 
   resources :brands,only:[:show,:index]
@@ -37,7 +38,7 @@ scope module: 'public' do
 
   get 'search' => 'searches#search'
   get 'sort' => 'posts#sort'
-  get 'sort_item_post' =>'items#sort_item_post'
+
 end
 
 namespace :admin do
