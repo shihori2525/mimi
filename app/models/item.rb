@@ -26,7 +26,7 @@ class Item < ApplicationRecord
     when 'old'
       return self.posts.order(created_at: :ASC)
     when 'likes'
-      return self.posts.(:favorited_members).sort {|a,b| b.favorited_members.size <=> a.favorited_members.size}
+      return self.posts.order(:favorited_members).sort {|a,b| b.favorited_members.size <=> a.favorited_members.size}
     end
   end
 
