@@ -18,16 +18,16 @@ class Item < ApplicationRecord
   end
 
   #ソート機能
-  def self.sort(selection)
+  def sorted_posts(selection)
     case selection
     when 'new'
-      return includes(:post).order("posts.created_at DESC")
+      #itemに紐づいている投稿を持ってくる
+      return self.posts.order(created_at: :DESC)
     when 'old'
-      return includes(:post).order("posts.created_at ASC")
+      return self.posts.order(created_at: :ASC)
     when 'likes'
-      return includes(:favorited_members).sort {|a,b| b.favorited_members.size <=> a.favorited_members.size}
+      return self.posts.(:favorited_members).sort {|a,b| b.favorited_members.size <=> a.favorited_members.size}
     end
   end
-
 
 end

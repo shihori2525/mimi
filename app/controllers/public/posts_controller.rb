@@ -26,7 +26,7 @@ class Public::PostsController < ApplicationController
   #ソート機能
   def sort
     selection = params[:keyword]
-    @sort_posts = Post.sort(selection)
+    @posts = Post.sort(selection)
   end
 
   def show
