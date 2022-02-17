@@ -9,7 +9,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.member_id = current_member.id
     if @post.save
-      redirect_to post_path(@post)
+      redirect_to post_path(@post),notice:'投稿しました'
     else
       @member = current_member
       render "new"
@@ -43,7 +43,7 @@ class Public::PostsController < ApplicationController
   def update
     @post =  Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to post_path(@post)
+      redirect_to post_path(@post),notice:'変更を保存しました'
     else
       render "edit"
     end

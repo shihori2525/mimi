@@ -25,7 +25,7 @@ class Admin::CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
-      redirect_to admin_categories_path
+      redirect_to admin_categories_path,notice:'変更を保存しました'
     else
       render "edit"
     end
