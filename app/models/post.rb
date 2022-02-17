@@ -14,6 +14,13 @@ class Post < ApplicationRecord
   attachment :image
   acts_as_taggable
 
+  validates :title, presence: true
+  validates :merit, presence: true
+  validates :demerit, presence: true
+  validates :usability, presence: true
+  validates :cost_performance, presence: true
+  validates :pattern, presence: true
+
   #レビューのバリデーション(星１〜５)
   validates :rate, numericality: {
     less_than_or_equal_to: 5,

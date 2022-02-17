@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2022_02_14_144307) do
 
   create_table "brands", force: :cascade do |t|
     t.integer "item_id"
+    t.string "item_image_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

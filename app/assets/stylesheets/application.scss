@@ -16,3 +16,17 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+// フラッシュメッセージの色変更
+#alert{
+  color: red;
+ }
+
+#notice {
+  color: green;
+}
+
+// deviseのエラーメッセージの色変更
+#error_explanation {
+  color: red;
+}

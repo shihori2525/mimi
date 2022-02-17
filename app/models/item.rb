@@ -12,6 +12,8 @@ class Item < ApplicationRecord
 
   attachment :item_image
 
+  validates :name, presence: true
+
   #検索機能
   def self.search_for(word)
     @items = Item.where(['name LIKE ?', "%#{word}%"])
@@ -29,5 +31,4 @@ class Item < ApplicationRecord
       return self.posts.order(:favorited_members).sort {|a,b| b.favorited_members.size <=> a.favorited_members.size}
     end
   end
-
 end

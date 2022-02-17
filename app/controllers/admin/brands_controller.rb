@@ -8,7 +8,7 @@ class Admin::BrandsController < ApplicationController
   def create
     @brand = Brand.new(brand_params)
     if @brand.save
-      redirect_to admin_brands_path
+      redirect_to admin_brands_path,notice:'ブランドを新規登録しました'
     else
       render "new"
     end
@@ -25,7 +25,7 @@ class Admin::BrandsController < ApplicationController
   def update
     @brand = Brand.find(params[:id])
     if @brand.update(brand_params)
-      redirect_to admin_brands_path
+      redirect_to admin_brands_path,notice:'変更を保存しました'
     else
       render "edit"
     end

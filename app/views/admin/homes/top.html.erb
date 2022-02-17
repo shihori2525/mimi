@@ -1,5 +1,6 @@
 <%= render 'layouts/admin_header' %>
 <div class="container">
+<div id="notice"><%= flash[:notice] %></div>
 管理者側トップページ
 
   <%= link_to "商品一覧", admin_items_path %>
