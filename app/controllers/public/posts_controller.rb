@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :correct_member, only: [:edit, :update]
+
   def new
     @post = Post.new
   end
@@ -58,5 +60,11 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:member_id,:item_id,:brand_id,:image,:title,:rate,:merit,:demerit,:usability,:cost_performance,:pattern,:other,:tag_list)
+  end
+
+  def correct_member
+    @post = Post.find(params[:id])
+    @member = @post.member
+    redirect_to posts_path unless  @member == current_member
   end
 end

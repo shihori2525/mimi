@@ -1,4 +1,6 @@
 class Public::BrandsController < ApplicationController
+  before_action :authenticate_member!
+
   def index
     @brands = Brand.all
   end

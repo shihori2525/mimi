@@ -1,4 +1,5 @@
 class Public::ItemsController < ApplicationController
+  before_action :authenticate_member!
 
   def show
     @item = Item.find(params[:id])

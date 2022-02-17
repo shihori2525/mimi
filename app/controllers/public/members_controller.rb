@@ -1,4 +1,5 @@
 class Public::MembersController < ApplicationController
+  before_action :correct_member, only: [:edit, :update]
 
   def show
     @member = Member.find(params[:id])
@@ -44,5 +45,10 @@ class Public::MembersController < ApplicationController
 
   def member_params
     params.require(:member).permit(:name,:email,:encrypted_password,:introduction,:profile_image)
+  end
+
+  def correct_member
+  @member = Member.find(params[:id])
+  redirect_to member_path(current_member.id) unless @member == current_member
   end
 end

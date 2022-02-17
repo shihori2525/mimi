@@ -1,4 +1,6 @@
 class Public::RelationshipsController < ApplicationController
+  before_action :authenticate_member!
+
   def create
     following = current_member.relationships.build(follower_id: params[:member_id])
     following.save
