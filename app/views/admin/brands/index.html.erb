@@ -1,7 +1,6 @@
 <%= render 'layouts/admin_header' %>
 ブランド一覧
-<p id="notice"></p>
-<%= render 'layouts/errors' ,obj:@brand %>
+<div id="notice"><%= flash[:notice] %></div>
 <%= link_to "ブランド登録",new_admin_brand_path %>
 <teble>
   <%= render 'admin/brands/index',brands: @brands %>
