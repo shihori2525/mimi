@@ -1,6 +1,7 @@
 <h2>Log in</h2>
-<%= render 'layouts/admin_header' %>
 
+<%= render 'layouts/admin_header' %>
+<div id="alert"><%= flash[:alert] %></div>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />

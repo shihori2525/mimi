@@ -1,4 +1,5 @@
 <%= render 'layouts/admin_header' %>
 商品新規登録
+<%= render 'layouts/errors' ,obj: @item %>
 <%= render 'admin/items/form',item:@item %>
 

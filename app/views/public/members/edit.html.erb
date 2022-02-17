@@ -1,4 +1,5 @@
 <%= render 'layouts/public_header' %>
+<%= render 'layouts/errors' ,obj: @member %>
 プロフィール編集
 
 <%= form_with model:@member,local:true do |f| %>

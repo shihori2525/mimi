@@ -1,3 +1,4 @@
 <%= render 'layouts/admin_header' %>
 カテゴリー登録
+<%= render 'layouts/errors' ,obj: @category %>
 <%= render 'admin/categories/form',category:@category %>
