@@ -1,21 +1,32 @@
 <%= render 'layouts/public_header' %>
 <div id="alert"><%= flash[:alert] %></div>
-<h2>Log in</h2>
+<div class="container">
+  <h5 class="d-flex align-items-center justify-content-center mt-4">
+    ログイン
+  </h5>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="d-flex align-items-center justify-content-center">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <table>
+        <tr class="form-group row mb-4 mt-5">
+          <td class="col-5"><%= f.label :メールアドレス %></td>
+          <td class="col-7"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+        </tr>
+
+        <tr class="form-group row">
+          <td class="col-5"><%= f.label :パスワード %></td>
+          <td class="col-5"><%= f.password_field :password, autocomplete: "current-password" %></td>
+        </tr>
+
+      </table>
+
+      <div class="form-group row">
+        <div class="col-2 mx-auto">
+          <%= f.submit "ログイン",class:"btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+</div>
