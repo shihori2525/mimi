@@ -2,25 +2,26 @@
     <div class="header-color container-fluid border border-5">
       <div class="row justify-content-between">
         <div class="col-md-lg-auto mr-3 align-self-center">
+          <a class="col-auto mr-auto p-3 m-0" href="/admin"><%= image_tag('logo.png', :size =>'110x100') %></a>
 
-        <button class= "btn btn-light mr-3 border border-secondary">
-          <%= link_to "検索", admin_search_path, class: "text-dark" %>
-        </button>
-        <button class= "btn btn-light mr-3 border border-secondary">
-          <%= link_to "商品", admin_items_path, class: "text-dark" %>
-        </button>
-        <button class= "btn btn-light mr-3 border border-secondary">
-          <%= link_to "ブランド", admin_brands_path, class: "text-dark" %>
-        </button>
-        <button class= "btn btn-light mr-3 border border-secondary">
-          <%= link_to "カテゴリー", admin_categories_path, class: "text-dark" %>
-        </button>
-        <button class= "btn btn-light mr-3 border border-secondary">
-          <%= link_to "ログイン", new_admin_session_path, class: "text-dark" %>
-        </button>
-        <button class= "btn btn-light border border-secondary">
-          <%= link_to "ログアウト", destroy_admin_session_path,method: :delete, class: "text-dark" %>
-        </button>
+          <button class= "btn btn-light mr-3 border border-secondary">
+            <%= link_to "検索", admin_search_path, class: "text-dark" %>
+          </button>
+          <button class= "btn btn-light mr-3 border border-secondary">
+            <%= link_to "商品", admin_items_path, class: "text-dark" %>
+          </button>
+          <button class= "btn btn-light mr-3 border border-secondary">
+            <%= link_to "ブランド", admin_brands_path, class: "text-dark" %>
+          </button>
+          <button class= "btn btn-light mr-3 border border-secondary">
+            <%= link_to "カテゴリー", admin_categories_path, class: "text-dark" %>
+          </button>
+          <button class= "btn btn-light mr-3 border border-secondary">
+            <%= link_to "ログイン", new_admin_session_path, class: "text-dark" %>
+          </button>
+          <button class= "btn btn-light border border-secondary">
+            <%= link_to "ログアウト", destroy_admin_session_path,method: :delete, class: "text-dark" %>
+          </button>
 
         </div>
       </div>
