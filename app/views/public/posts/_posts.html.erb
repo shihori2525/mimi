@@ -1,3 +1,14 @@
+<thead>
+  <tr>
+    <th>投稿画像</th>
+    <th>商品名</th>
+    <th>タイトル</th>
+    <th>レビュー</th>
+    <th>ユーザー</th>
+    <th></th>
+  </tr>
+</thead>
+
 <% posts.each do |post| %>
   <tr>
     <td><%= attachment_image_tag post, :image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %></td>

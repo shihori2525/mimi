@@ -1,50 +1,71 @@
 <%= render 'layouts/public_header' %>
-商品詳細
 <div class="container">
-  <div class="row">
-    <%= link_to brand_path(@item.brand) do %>
-      <%= @item.brand.name %>
-    <% end %>
-
-    <%= @item.name %>
+  <div class="row mt-3 mb-2">
+    <div class="col-sm-3">
+      <%= link_to brand_path(@item.brand) do %>
+        <%= @item.brand.name %>
+      <% end %>
+    </div>
   </div>
-  <div class="row">
-    <%= attachment_image_tag @item, :item_image, format: 'jpeg', fallback: "no_image.jpg", size: "200x200" %>
-    <p>口コミ評価</p>
-
-    口コミ<%= @item.posts.count %>件
-
-    <!--星評価-->
-    <div id="average-star-rating-<%= @item.id %>"></div>
-     <script>
-      $('#average-star-rating-<%= @item.id %>').raty({
-        size: 36,
-        starOff: '<%= asset_path('star-off.png')%>',
-        starOn: '<%= asset_path('star-on.png')%>',
-        starHalf: '<%= asset_path('star-half.png')%>',
-        half: true,
-        readOnly: true,
-        score: <%= @item.posts.average(:rate).to_f.round(1) %>,
-      });
-      </script>
-    <!--星評価終わり-->
-
-    <%= @item.posts.average(:rate).to_f.round(1) %>
-  </div>
-  <div class="row">
-    <%= form_with url: item_sort_item_post_path(@item.id), method: :get,local:true do |f| %>
-      <%= f.select :keyword, [['投稿が新しい順', 'new'],['投稿が古い順', 'old'],['いいねが多い順', 'likes']]%>
-      <%= f.submit "並べ替え" %>
-    <% end %>
-  </div>
-
-  <div class="row">
-    <div id ="favorite_buttons_<%= @item.id %>">
-      <%= render 'public/item_favorites/favorite',item:@item %>
+  <div class="row mb-2">
+    <div class="col-sm-3">
+      <%= @item.name %>
     </div>
   </div>
 
-  <table>
+  <div class="row">
+    <div class="col-sm-3">
+      <%= attachment_image_tag @item, :item_image, format: 'jpeg', fallback: "no_image.jpg", size: "200x200" %>
+    </div>
+
+    <table>
+      <tr>
+        <td>
+          <p>口コミ評価</p>
+
+          <!--星評価-->
+          <div id="average-star-rating-<%= @item.id %>"></div>
+           <script>
+            $('#average-star-rating-<%= @item.id %>').raty({
+              size: 36,
+              starOff: '<%= asset_path('star-off.png')%>',
+              starOn: '<%= asset_path('star-on.png')%>',
+              starHalf: '<%= asset_path('star-half.png')%>',
+              half: true,
+              readOnly: true,
+              score: <%= @item.posts.average(:rate).to_f.round(1) %>,
+            });
+            </script>
+          <!--星評価終わり-->
+
+            <%= @item.posts.average(:rate).to_f.round(1) %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+        口コミ(<%= @item.posts.count %>件)
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id ="favorite_buttons_<%= @item.id %>">
+            <%= render 'public/item_favorites/favorite',item:@item %>
+          </div>
+        </td>
+      </tr>
+  </table>
+
+  </div>
+  <div class="row mt-3 mb-3">
+    <div class="col-sm-3">
+      <%= form_with url: item_sort_item_post_path(@item.id), method: :get,local:true do |f| %>
+        <%= f.select :keyword, [['投稿が新しい順', 'new'],['投稿が古い順', 'old'],['いいねが多い順', 'likes']]%>
+        <%= f.submit "並べ替え" %>
+      <% end %>
+    </div>
+  </div>
+
+  <table class='table table-hover table-inverse'>
     <!--データがあるか調べる-->
     <% if @posts.present? %>
       <%= render 'public/posts/posts',posts:@posts ,post:@post %>
