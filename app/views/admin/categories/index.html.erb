@@ -30,4 +30,36 @@
       </tbody>
     </teble>
   </div>
+</div><%= render 'layouts/admin_header' %>
+
+<div class="container">
+  <div id="notice"><%= flash[:notice] %></div>
+
+  <div class="row mt-4 mb-4">
+    <div class="col text-right">
+      <%= link_to "カテゴリー登録",new_admin_category_path,class: "btn btn-info text-light" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class='table table-hover table-inverse'>
+      <thead>
+        <tr>
+          <th>カテゴリー名</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.name %></td>
+          <td><%= link_to "編集",edit_admin_category_path(category),class: "btn btn-info" %></td>
+          <td><%= link_to "削除",admin_category_path(category),class: "btn btn-danger",method: :delete,"data-confirm" => "本当に消しますか？" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </teble>
+  </div>
 </div>
