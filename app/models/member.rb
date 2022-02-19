@@ -26,5 +26,5 @@ class Member < ApplicationRecord
   attachment :profile_image
 
   validates :name, presence: true,length: {maximum: 20, minimum: 2}, uniqueness: true
-  validates :introduction,length: {maximum: 100}
+  validates :introduction,length: {maximum: 200}
 end

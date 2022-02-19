@@ -1,7 +1,6 @@
 <%= render 'layouts/public_header' %>
-ブランド一覧
-<teble>
-  <tbody>
+<div class="container mt-5">
+  <table class='table table-hover table-inverse'>
     <%= render 'public/brands/index',brands:@brands %>
-  </tbody>
-</teble>
+  </table>
+</div>

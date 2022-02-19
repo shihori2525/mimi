@@ -1,9 +1,9 @@
 <% brands.each do |brand| %>
   <tr>
-  <td>
-  <%= link_to brand_path(brand) do %>
-    <%= brand.name %>
-  <% end %>
-  </td>
+    <td>
+      <%= link_to brand_path(brand) do %>
+        <%= brand.name %>
+      <% end %>
+    </td>
   </tr>
 <% end %>
