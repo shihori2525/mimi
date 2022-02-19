@@ -1,13 +1,14 @@
 <%= render 'layouts/public_header' %>
-カテゴリー一覧
-<teble>
-  <tbody>
+<div class="container mt-5 col-sm-8">
+  <table class='table table-hover table-inverse'>
     <% @categories.each do |category| %>
-    <tr>
-    <%= link_to category_path(category) do %>
-      <td><%= category.name %></td>
+      <tr>
+         <td>
+        <%= link_to category_path(category) do %>
+         <%= category.name %>
+        <% end %>
+        </td>
+      </tr>
     <% end %>
-    </tr>
-    <% end %>
-  </tbody>
-</teble>
+  </table>
+</div>

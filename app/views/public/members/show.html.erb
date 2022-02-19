@@ -1,45 +1,62 @@
 <%= render 'layouts/public_header' %>
-会員詳細ページ（マイページ）
+<div class="container col-sm-8">
 <div id="notice"><%= flash[:notice] %></div>
-<table>
-  <tbody>
-    <tr>
-      <td><%= attachment_image_tag @member, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %></td>
-      <td>
-        <% if @member != current_member %>
-          <% if @member.is_followed_by?(current_member) %>
-            <%=link_to member_relationships_path(@member), method: :delete do %>
-              <button type="button" class="btn btn btn-danger">フォロー中</button>
-            <% end %>
-          <% else %>
-            <%=link_to member_relationships_path(@member), method: :post do %>
-              <button type="button" class="btn btn btn-primary">フォロー</button>
-            <% end %>
+  <div class="row mt-4 mb-4">
+    <div class="col">
+      <%= attachment_image_tag @member, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %>
+    </div>
+
+    <div class="col text-right">
+      <% if @member != current_member %>
+        <% if @member.is_followed_by?(current_member) %>
+          <%=link_to member_relationships_path(@member), method: :delete do %>
+            <button type="button" class="btn btn btn-danger">フォロー中</button>
+          <% end %>
+      <% elsif %>
+          <%=link_to member_relationships_path(@member), method: :post do %>
+            <button type="button" class="btn btn btn-primary">フォロー</button>
           <% end %>
         <% end %>
 
-        <% if current_member == @member %>
-          <%= link_to "編集する",edit_member_path(@member) %>
-        <% end %>
-      </td>
+      <% else %>
+          <%= link_to edit_member_path(@member) do %>
+            <button type="button" class="btn btn btn-info">編集する</button>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <%= @member.name %>
+    </div>
+  </div>
+
+  <div class="row mt-3 mb-3">
+    <div class="col">
+      <%= @member.introduction %>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col">
+      フォロー:<%= link_to @member.followings.count,followings_member_path(@member) %>
+      フォロワー:<%= link_to @member.followers.count,followers_member_path(@member) %>
 
       <% if current_member == @member %>
-        <td><%=link_to"いいねした投稿",post_favorites_member_path(@member) %></td>
-        <td><%=link_to"いいねした商品",item_favorites_member_path(@member) %></td>
+        <%=link_to post_favorites_member_path(@member) do %>
+          <i class="fas fa-heart" style="color:red;"></i>投稿
+        <% end %>
+
+        <%=link_to item_favorites_member_path(@member) do %>
+          <i class="fas fa-heart" style="color:red;"></i>商品
+        <% end %>
       <% end %>
-    </tr>
-    <tr>
-      <td><%= @member.name %></td>
-    </tr>
-    <tr>
-      <td><%= @member.introduction %></td>
-    </tr>
-    <tr>
-      <td>フォロー:<%= link_to @member.followings.count,followings_member_path(@member) %></td>
-      <td>フォロワー:<%= link_to @member.followers.count,followers_member_path(@member) %></td>
-    </tr>
+    </div>
+  </div>
 
-    <%= render 'public/posts/posts',posts:@member.posts, post:@post %>
 
-  </tbody>
-</table>
+   <table class='table table-hover table-inverse'>
+      <%= render 'public/posts/posts',posts:@member.posts, post:@post %>
+  </table>
+</div>
