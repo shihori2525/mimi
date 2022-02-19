@@ -1,3 +1,13 @@
+<thead>
+  <tr>
+    <th>商品画像</th>
+    <th>商品名</th>
+    <th>ブランド名</th>
+    <th>カテゴリー</th>
+    <th>レビュー</th>
+  </tr>
+</thead>
+
 <% items.each do |item| %>
   <tr>
     <td>
@@ -22,6 +32,9 @@
       <!--星評価-->
       <div id="average-star-rating-<%= item.id %>"></div>
        <script>
+       // 星部分を一度削除
+      $('#average-star-rating-<%= item.id %>').empty();
+
         $('#average-star-rating-<%= item.id %>').raty({
           size: 36,
           starOff: '<%= asset_path('star-off.png')%>',
