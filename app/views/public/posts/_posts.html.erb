@@ -27,6 +27,9 @@
       <!--星評価-->
       <div id="star-rate-<%= post.id %>"></div>
       <script>
+      // 星部分を一度削除
+      $('#star-rate-<%= post.id %>').empty();
+
         $('#star-rate-<%= post.id %>').raty({
           size :36,
           starOff: '<%= asset_path('star-off.png')%>',
