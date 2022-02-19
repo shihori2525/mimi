@@ -1,5 +1,6 @@
 <%= render 'layouts/admin_header' %>
-商品新規登録
-<%= render 'layouts/errors' ,obj: @item %>
-<%= render 'admin/items/form',item:@item %>
+<div class="container col-sm-7 mt-4">
+  <%= render 'layouts/errors' ,obj: @item %>
+  <%= render 'admin/items/form',item:@item %>
+</div>
 
