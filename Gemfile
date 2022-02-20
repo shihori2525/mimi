@@ -74,9 +74,13 @@ gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~>5.13'
 gem 'pry-rails'
-gem 'dotenv-rails'
 gem 'acts-as-taggable-on', '~> 6.0'
 
 gem 'rails-i18n', '~> 5.1'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
