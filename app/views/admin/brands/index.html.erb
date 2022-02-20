@@ -1,0 +1,16 @@
+<%= render 'layouts/admin_header' %>
+<div class="container">
+  <div id="notice"><%= flash[:notice] %></div>
+
+  <div class="row mt-4 mb-4">
+    <div class="col text-right">
+      <%= link_to "ブランド登録",new_admin_brand_path,class: "btn btn-info text-light" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class='table table-hover table-inverse'>
+      <%= render 'admin/brands/index',brands: @brands %>
+    </teble>
+  </div>
+</div>

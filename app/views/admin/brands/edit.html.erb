@@ -1,0 +1,6 @@
+<%= render 'layouts/admin_header' %>
+<div class="container col-sm-7 mt-4">
+<div id="notice"><%= flash[:notice] %></div>
+  <%= render 'layouts/errors' ,obj: @brand %>
+  <%= render 'admin/brands/form',brand:@brand %>
+</div>

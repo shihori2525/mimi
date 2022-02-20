@@ -1,0 +1,5 @@
+<%= render 'layouts/admin_header' %>
+<div class="container col-sm-7 mt-4">
+  <%= render 'layouts/errors' ,obj: @category %>
+  <%= render 'admin/categories/form',category:@category %>
+</div>

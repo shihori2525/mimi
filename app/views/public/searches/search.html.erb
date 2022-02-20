@@ -1,0 +1,31 @@
+<%= render 'layouts/public_header' %>
+<div class="container col-sm-8">
+
+  <!--検索フォーム-->
+  <%= form_with url: search_path,method: :get,local: true do |f| %>
+    <div class="row mt-3 mb-3">
+      <div class="col-sm-7">
+        <%= f.text_field :word, placeholder: "キーワードを入力してください", class: "form-control"%>
+      </div>
+      <div class="col-sm-3">
+        <%= f.select :range ,[['---選択してください---',''],['ブランド','1'],['商品','2']],{},class: 'form-control'%>
+      </div>
+      <div class="col-sm-2">
+        <%= submit_tag '検索',class:"btn btn-info" %>
+      </div>
+    </div>
+  <% end %>
+
+
+  <!--検索結果表示-->
+   <table class='table table-hover table-inverse'>
+    <% if @range == '1' %>
+      <h2>ブランド検索結果 "<%= @word %>"</h2>
+        <%= render 'public/brands/index',brands: @records %>
+
+    <% elsif @range == '2'%>
+    <h2>商品検索結果 "<%= @word %>"</h2>
+      <%= render 'public/items/index',items: @records %>
+    <% end %>
+  </table>
+</div>

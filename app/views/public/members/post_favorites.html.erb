@@ -1,0 +1,6 @@
+<%= render 'layouts/public_header' %>
+<div class="container col-sm-8">
+  <table class='table table-hover table-inverse'>
+    <%= render 'public/members/favorite_index',favorite:@favorite_posts ,post:@post %>
+  </table>
+</div>

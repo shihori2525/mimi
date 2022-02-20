@@ -1,0 +1,41 @@
+<header>
+    <div class="container-fluid border border-5">
+      <div class="row justify-content-between">
+        <a class="col-auto mr-auto p-3 m-0" href="/"><%= image_tag('logo.png', :size =>'110x100') %></a>
+        <div class="col-md-lg-auto mr-3 align-self-center">
+          <% if member_signed_in? %>
+          <button class= "btn btn-light mr-3 border border-secondary">
+            <%= link_to "検索", search_path, class: "text-dark" %>
+          </button>
+          <button class= "btn btn-light mr-3 border border-secondary">
+            <%= link_to "口コミする", new_post_path, class: "text-dark" %>
+          </button>
+          <button class= "btn btn-light mr-3 border border-secondary">
+            <%= link_to "投稿一覧", posts_path, class: "text-dark" %>
+          </button>
+          <button class= "btn btn-light mr-3 border border-secondary">
+            <%= link_to "ブランド", brands_path, class: "text-dark" %>
+          </button>
+          <button class= "btn btn-light mr-3 border border-secondary">
+            <%= link_to "カテゴリー", categories_path, class: "text-dark" %>
+          </button>
+          <button class= "btn btn-light mr-3 border border-secondary">
+            <%= link_to "マイページ", member_path(current_member.id), class: "text-dark" %>
+          </button>
+          <button class= "btn btn-light border border-secondary">
+            <%= link_to "ログアウト", destroy_member_session_path,method: :delete, class: "text-dark" %>
+          </button>
+
+          <% else %>
+          <button class= "btn btn-light mr-3 border border-secondary">
+            <%= link_to "新規登録",new_member_registration_path, class: "text-dark" %>
+          </button>
+           <button class= "btn btn-light mr-3 border border-secondary">
+            <%= link_to "ログイン", new_member_session_path, class: "text-dark" %>
+          </button>
+          <% end %>
+        </div>
+      </div>
+     </div>
+  </div>
+</header>

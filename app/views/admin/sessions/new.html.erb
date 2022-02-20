@@ -1,0 +1,30 @@
+<%= render 'layouts/admin_header' %>
+<div id="alert"><%= flash[:alert] %></div>
+<div class="container">
+  <h5 class="d-flex align-items-center justify-content-center mt-4">管理者ログイン</h5>
+
+  <div class="d-flex align-items-center justify-content-center">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <table>
+        <tr class="form-group row mb-4 mt-5">
+          <td class="col-5"><%= f.label :メールアドレス %></td>
+          <td class="col-7"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+        </tr>
+
+        <tr class="form-group row">
+          <td class="col-5"><%= f.label :パスワード %></td>
+          <td class="col-7"><%= f.password_field :password, autocomplete: "current-password" %></td>
+        </tr>
+      </table>
+
+      <div class="form-group row">
+        <div class="col-2 mx-auto">
+          <%= f.submit "ログイン",class:"btn btn-info" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+
+  <%= render "admin/shared/links" %>
+</div>
