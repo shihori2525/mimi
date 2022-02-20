@@ -1,3 +1,5 @@
 <%= render 'layouts/admin_header' %>
-商品編集
-<%= render 'admin/items/form',item:@item %>
+<div class="container col-sm-7 mt-4">
+  <%= render 'layouts/errors' ,obj: @item %>
+  <%= render 'admin/items/form',item:@item %>
+</div>

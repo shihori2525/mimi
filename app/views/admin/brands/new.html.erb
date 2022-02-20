@@ -1,4 +1,5 @@
 <%= render 'layouts/admin_header' %>
-ブランド登録
-<%= render 'layouts/errors' ,obj: @brand %>
-<%= render 'admin/brands/form',brand:@brand %>
+<div class="container col-sm-7 mt-4">
+  <%= render 'layouts/errors' ,obj: @brand %>
+  <%= render 'admin/brands/form',brand:@brand %>
+</div>

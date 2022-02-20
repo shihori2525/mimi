@@ -1,0 +1,42 @@
+ja:
+  activerecord:
+    attributes:
+      member:
+        name: "名前"
+        introduction: "自己紹介文"
+        email: "メールアドレス"
+        password: "パスワード"
+        encrypted_password: "パスワード"
+        password_confirmation: "確認パスワード"
+
+
+      item:
+        name: "商品名"
+        item_image: "商品画像"
+        brand_id: "ブランド"
+        category_id: "カテゴリー"
+        brand: "ブランド"
+        category: "カテゴリー"
+
+
+      admin:
+        email: "メールアドレス"
+        password: "パスワード"
+
+      post:
+        item: "商品名"
+        brand: "ブランド"
+        title: "タイトル"
+        rate: "星レビュー"
+        merit: "メリット"
+        demerit: "デメリット"
+        usability: "使い心地"
+        cost_performance: "コスパ"
+        pattern: "商品パターン（色）"
+
+      brand:
+        name: "ブランド名"
+
+      category:
+        name: "カテゴリー名"
+

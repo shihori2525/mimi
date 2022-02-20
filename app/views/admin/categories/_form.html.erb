@@ -5,5 +5,10 @@
         <%= f.text_field :name, placeholder: "カテゴリー名", class: "form-control" %>
       </div>
   </div>
-  <%= f.submit %>
+
+  <div class="row mt-4 mb-4">
+    <div class="col text-right">
+      <%= f.submit :class =>"btn btn-info"%>
+    </div>
+  </div>
 <% end %>
