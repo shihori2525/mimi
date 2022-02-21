@@ -49,12 +49,15 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  gem 'pry-byebug'
+
 
   gem 'rubocop', require: false
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
+
+  gem 'pry-byebug'
+  gem 'pry-rails'
 end
 
 group :test do
@@ -73,7 +76,6 @@ gem 'kaminari'
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~>5.13'
-gem 'pry-rails'
 gem 'acts-as-taggable-on', '~> 6.0'
 
 gem 'rails-i18n', '~> 5.1'
