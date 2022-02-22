@@ -132,7 +132,6 @@ ActiveRecord::Schema.define(version: 2022_02_14_144307) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "taggings_count", default: 0
-    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
 end
