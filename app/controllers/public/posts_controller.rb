@@ -17,11 +17,12 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+  end
 
-    #タグの絞り込み
-    if params[:tag_name]
-      @posts = Post.tagged_with("#{params[:tag_name]}")
-    end
+#タグの絞り込み
+  def tag
+    params[:tag_name]
+    @posts = Post.tagged_with("#{params[:tag_name]}")
   end
 
   #ソート機能

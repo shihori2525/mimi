@@ -1,0 +1,10 @@
+<%= render 'layouts/public_header' %>
+<div class="container col-sm-8">
+  <div class="row">
+      <table class='table table-hover table-inverse'>
+        <% if @posts.present? %>
+          <%= render 'public/posts/posts',posts:@posts ,post:@post %>
+        <% end %>
+      </table>
+    </div>
+</div>
