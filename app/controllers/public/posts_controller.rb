@@ -1,6 +1,5 @@
 class Public::PostsController < ApplicationController
-  before_action :authenticate_member!
-  before_action :correct_member, only: [:edit, :update]
+  before_action :correct_member
 
   def new
     @post = Post.new
