@@ -11,7 +11,6 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post),notice:'投稿しました'
     else
-      @member = current_member
       render "new"
     end
   end

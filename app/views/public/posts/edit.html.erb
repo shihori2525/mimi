@@ -1,5 +1,94 @@
 <%= render 'layouts/public_header' %>
 <div class="container col-sm-7">
   <%= render 'layouts/errors' ,obj: @post %>
-  <%= render 'public/posts/form',post:@post %>
+  <%= form_with model:@post,local:true do |f| %>
+
+    <div class="row mt-3 mb-3">
+      <%= f.label :ブランド, class: "col-sm-2 control-label" %>
+      <%= f.collection_select :brand_id, Brand.all, :id, :name,{prompt: "選択してください"},class: "form-control text-muted" %>
+    </div>
+    <div class="row mb-3">
+      <%= f.label :商品名, class: "col-sm-2 control-label" %>
+      <%= f.collection_select :item_id, Item.all, :id, :name,{prompt: "選択してください"},class: "form-control text-muted" %>
+    </div>
+
+
+
+    <!--評価-->
+    <div class="row mb-3">
+    <p class="col-1">評価</p>
+      <div id="star">
+        <%= f.hidden_field :rate,id: :review_star %>
+      </div>
+
+      <!--評価javascript-->
+      <script>
+      // 星部分を一度削除
+      $('#star<%= @post.id %>').empty();
+
+        $('#star').raty({
+          size :36,
+          starOff: '<%= asset_path('star-off.png')%>',
+          starOn: '<%= asset_path('star-on.png')%>',
+          starHalf: '<%= asset_path('star-half.png')%>',
+          scoreName: 'post[rate]',
+          half: true,
+          // 前回の評価を読み込み
+          score: <%= @post.rate %>,
+        });
+      </script>
+    </div>
+
+
+    <div class="row mb-3">
+      <%= f.label :画像, class: "col-sm-1 control-label" %>
+      <%= f.attachment_field :image, class: "col-sm-11" %>
+    </div>
+
+    <div class="row mb-3">
+      <%= f.label :タイトル, class: "col-sm-2 control-label" %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="row mb-3">
+      <%= f.label :メリット, class: "col-sm-2 control-label" %>
+      <%= f.text_area :merit, class: "form-control" %>
+    </div>
+
+    <div class="row mb-3">
+      <%= f.label :デメリット, class: "col-sm-2 control-label" %>
+      <%= f.text_area :demerit, class: "form-control" %>
+    </div>
+
+    <div class="row mb-3">
+      <%= f.label :使い心地, class: "col-sm-2 control-label" %>
+      <%= f.text_area :usability, class: "form-control" %>
+    </div>
+
+    <div class="row mb-3">
+      <%= f.label :コスパ, class: "col-sm-2 control-label" %>
+      <%= f.text_area :cost_performance, class: "form-control" %>
+    </div>
+
+    <div class="row mb-3">
+      <%= f.label :商品のパターン（色）, class: "col-sm-3 control-label" %>
+      <%= f.text_field :pattern, class: "form-control" %>
+    </div>
+
+    <div class="row mb-3">
+      <%= f.label :もっと伝えたい！, class: "col-sm-3 control-label" %>
+      <%= f.text_area :other, placeholder: "ご自由にお書きください", class: "form-control" %>
+    </div>
+
+    <div class="row pb-3">
+      <%= f.label :タグ, class: "col-sm-2 control-label" %>
+      <%= f.text_field :tag_list,value: @post.tag_list.join(','), placeholder: "かわいい,コスパ（カンマで区切って複数登録できます）",class: "form-control" %>
+    </div>
+
+    <div class="row mt-4 mb-4">
+      <div class="col text-right">
+        <%= f.submit :class=>"btn btn-info" %>
+      </div>
+    </div>
+  <% end %>
 </div>
