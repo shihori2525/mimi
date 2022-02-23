@@ -38,8 +38,6 @@ scope module: 'public' do
 
   get 'search' => 'searches#search'
   get 'sort' => 'posts#sort'
-  get 'tag' => 'posts#tag'
-
 end
 
 namespace :admin do
