@@ -34,19 +34,19 @@ Category.create!(
 
 Brand.create!(
 [
- {name: 'ケイト'},
- {name: 'キャンメイク'},
- {name: 'エクセル'}
+ {name: 'エイト'},
+ {name: 'キャンメイキング'},
+ {name: 'アクセル'}
 ]
 )
 
 Item.create!(
 [
- {name: 'リップモンスター',brand_id:'1',category_id:'9',item_image: File.open("#{Rails.root}/db/fixtures/sample-item1.JPG")},
- {name: 'ダブルラインエキスパート',brand_id:'1',category_id:'5',item_image: File.open("#{Rails.root}/db/fixtures/sample-item2.JPG")},
- {name: 'クイックラッシュカーラー',brand_id:'2',category_id:'7',item_image: File.open("#{Rails.root}/db/fixtures/sample-item3.JPG")},
- {name: 'シルキースフレアイズ',brand_id:'2',category_id:'6',item_image: File.open("#{Rails.root}/db/fixtures/sample-item4.JPG")},
- {name: 'グロウルミナイザー UV',brand_id:'3',category_id:'2',item_image: File.open("#{Rails.root}/db/fixtures/sample-item5.JPG")},
- {name: 'スキニーリッチシャドウ',brand_id:'3',category_id:'6',item_image: File.open("#{Rails.root}/db/fixtures/sample-item6.JPG")}
+ {name: 'リップスモンスター',brand_id:'1',category_id:'9',item_image: File.open("#{Rails.root}/db/fixtures/sample-item1.JPG")},
+ {name: 'トリプルラインエキスパート',brand_id:'1',category_id:'5',item_image: File.open("#{Rails.root}/db/fixtures/sample-item2.JPG")},
+ {name: 'クイックラッシュカーラーズ',brand_id:'2',category_id:'7',item_image: File.open("#{Rails.root}/db/fixtures/sample-item3.JPG")},
+ {name: 'シルキー＆スフレアイズ',brand_id:'2',category_id:'6',item_image: File.open("#{Rails.root}/db/fixtures/sample-item4.JPG")},
+ {name: 'グロウル ルミナイザー UV',brand_id:'3',category_id:'2',item_image: File.open("#{Rails.root}/db/fixtures/sample-item5.JPG")},
+ {name: 'スキニーリッチリッチシャドウ',brand_id:'3',category_id:'6',item_image: File.open("#{Rails.root}/db/fixtures/sample-item6.JPG")}
 ]
 )
