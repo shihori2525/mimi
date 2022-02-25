@@ -13,4 +13,11 @@
       <%= render 'admin/brands/index',brands: @brands %>
     </teble>
   </div>
+
+  <div class="row">
+    <div class="col text-right">
+    <%= paginate @brands %>
+    </div>
+  </div>
+
 </div>
