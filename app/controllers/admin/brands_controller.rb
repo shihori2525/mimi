@@ -15,7 +15,7 @@ class Admin::BrandsController < ApplicationController
   end
 
   def index
-    @brands = Brand.all
+    @brands = Brand.page(params[:page]).reverse_order
   end
 
   def edit

@@ -5,11 +5,10 @@
     <th></th>
   </tr>
 </thead>
-
-<% brands.each do |brand| %>
-  <tr>
-    <td><%= brand.name %></td>
-    <td><%= link_to "編集",edit_admin_brand_path(brand),class: "btn btn-info" %></td>
-    <td><%= link_to "削除",admin_brand_path(brand),class: "btn btn-danger",method: :delete,"data-confirm" => "本当に消しますか？" %></td>
-  </tr>
-<% end %>
+  <% brands.each do |brand| %>
+    <tr>
+      <td><%= brand.name %></td>
+      <td><%= link_to "編集",edit_admin_brand_path(brand),class: "btn btn-info" %></td>
+      <td><%= link_to "削除",admin_brand_path(brand),class: "btn btn-danger",method: :delete,"data-confirm" => "本当に消しますか？" %></td>
+    </tr>
+  <% end %>
