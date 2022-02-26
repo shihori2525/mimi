@@ -1,6 +1,6 @@
 <%= render 'layouts/admin_header' %>
 
-<div class="container">
+<div class="container col-sm-8">
 
   <div class="row mt-4 mb-4">
     <div class="col text-right">
@@ -11,7 +11,11 @@
   <div class="row">
     <table class='table table-hover table-inverse'>
       <%= render 'admin/items/index',items: @items %>
-    </teble>
+    </table>
+  </div>
+
+  <div class="row justify-content-center mt-2">
+    <%= paginate @items %>
   </div>
 
 </div>

@@ -4,6 +4,7 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
+    @posts = @member.posts.page(params[:page]).reverse_order
   end
 
   def edit
