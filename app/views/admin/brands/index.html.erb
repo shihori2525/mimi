@@ -1,5 +1,5 @@
 <%= render 'layouts/admin_header' %>
-<div class="container">
+<div class="container col-sm-8">
   <div id="notice"><%= flash[:notice] %></div>
 
   <div class="row mt-4 mb-4">
@@ -11,13 +11,11 @@
   <div class="row">
     <table class='table table-hover table-inverse'>
       <%= render 'admin/brands/index',brands: @brands %>
-    </teble>
+    </table>
   </div>
 
-  <div class="row">
-    <div class="col text-right">
+  <div class="row justify-content-center mt-2">
     <%= paginate @brands %>
-    </div>
   </div>
 
 </div>
