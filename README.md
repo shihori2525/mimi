@@ -37,8 +37,8 @@
 https://docs.google.com/spreadsheets/d/1rL772C0msh6R45QdI3j3hbb6eM5oHyhXyuPmex_hXTc/edit?usp=sharing
 
 ## 開発環境
-- OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- OS：Linux release 2 (Karoo)
+- 言語：HTML,CSS,JavaScript,Ruby
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
