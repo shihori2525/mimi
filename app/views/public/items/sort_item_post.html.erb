@@ -26,6 +26,8 @@
           <!--星評価-->
           <div id="average-star-rating-<%= @item.id %>"></div>
            <script>
+           // 星部分を一度削除
+           $('#average-star-rating-<%= @item.id %>').empty();
             $('#average-star-rating-<%= @item.id %>').raty({
               size: 36,
               starOff: '<%= asset_path('star-off.png')%>',
