@@ -28,7 +28,6 @@ class Item < ApplicationRecord
     when 'old'
       return self.posts.order(created_at: :ASC)
     when 'likes'
-      # binding.pry
       return self.posts.includes(:favorited_members).sort {|a,b| b.favorited_members.size <=> a.favorited_members.size}
     end
   end
