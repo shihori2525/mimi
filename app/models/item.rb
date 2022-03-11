@@ -1,8 +1,8 @@
 class Item < ApplicationRecord
-  has_many :posts,dependent: :destroy
-  has_many :favorited_members,through: :item_favorites,source: :member
+  has_many :posts, dependent: :destroy
+  has_many :favorited_members, through: :item_favorites, source: :member
 
-  has_many :item_favorites,dependent: :destroy
+  has_many :item_favorites, dependent: :destroy
   def item_favorited_by?(member)
     item_favorites.where(member_id: member.id).exists?
   end
@@ -14,21 +14,21 @@ class Item < ApplicationRecord
 
   validates :name, presence: true
 
-  #検索機能
+  # 検索機能
   def self.search_for(word)
     @items = Item.where(['name LIKE ?', "%#{word}%"])
   end
 
-  #ソート機能
+  # ソート機能
   def sorted_posts(selection)
     case selection
     when 'new'
-      #itemに紐づいている投稿を持ってくる
-      return self.posts.order(created_at: :DESC)
+      # itemに紐づいている投稿を持ってくる
+      posts.order(created_at: :DESC)
     when 'old'
-      return self.posts.order(created_at: :ASC)
+      posts.order(created_at: :ASC)
     when 'likes'
-      return self.posts.includes(:favorited_members).sort {|a,b| b.favorited_members.size <=> a.favorited_members.size}
+      posts.includes(:favorited_members).sort { |a, b| b.favorited_members.size <=> a.favorited_members.size }
     end
   end
 end

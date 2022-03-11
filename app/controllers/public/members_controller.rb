@@ -1,6 +1,6 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!
-  before_action :correct_member, only: [:edit, :update]
+  before_action :correct_member, only: %i[edit update]
 
   def show
     @member = Member.find(params[:id])
@@ -14,9 +14,9 @@ class Public::MembersController < ApplicationController
   def update
     @member = Member.find(params[:id])
     if @member.update(member_params)
-      redirect_to member_path(@member),notice:'プロフィールを更新しました'
+      redirect_to member_path(@member), notice: 'プロフィールを更新しました'
     else
-      render "edit"
+      render 'edit'
     end
   end
 
@@ -42,15 +42,14 @@ class Public::MembersController < ApplicationController
     @favorite_items = Item.find(item_favorites)
   end
 
-
   private
 
   def member_params
-    params.require(:member).permit(:name,:email,:encrypted_password,:introduction,:profile_image)
+    params.require(:member).permit(:name, :email, :encrypted_password, :introduction, :profile_image)
   end
 
   def correct_member
-  @member = Member.find(params[:id])
-  redirect_to member_path(current_member.id) unless @member == current_member
+    @member = Member.find(params[:id])
+    redirect_to member_path(current_member.id) unless @member == current_member
   end
 end

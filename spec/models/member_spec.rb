@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Member, type: :model do
   describe 'バリデーションのテスト' do
-
     context '' do
       it '空欄でないこと' do
         member.name = ''

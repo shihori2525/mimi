@@ -1,6 +1,6 @@
 class Brand < ApplicationRecord
-  has_many :items,dependent: :destroy
-  has_many :posts,dependent: :destroy
+  has_many :items, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   attachment :item_image
 
@@ -9,5 +9,4 @@ class Brand < ApplicationRecord
   def self.search_for(word)
     Brand.where(['name LIKE ?', "%#{word}%"])
   end
-
 end

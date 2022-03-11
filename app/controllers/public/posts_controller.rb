@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_member!
-  before_action :correct_member, only: [:edit, :update]
+  before_action :correct_member, only: %i[edit update]
 
   def new
     @post = Post.new
@@ -10,22 +10,20 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.member_id = current_member.id
     if @post.save
-      redirect_to post_path(@post),notice:'投稿しました'
+      redirect_to post_path(@post), notice: '投稿しました'
     else
-      render "new"
+      render 'new'
     end
   end
 
   def index
     @posts = Post.page(params[:page]).reverse_order
 
-    #タグの絞り込み
-    if params[:tag_name]
-      @posts = Post.tagged_with("#{params[:tag_name]}")
-    end
+    # タグの絞り込み
+    @posts = Post.tagged_with(params[:tag_name].to_s) if params[:tag_name]
   end
 
-  #ソート機能
+  # ソート機能
   def sort
     selection = params[:keyword]
     @posts = Post.sort(selection)
@@ -43,28 +41,28 @@ class Public::PostsController < ApplicationController
   def update
     @post =  Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to post_path(@post),notice:'変更を保存しました'
+      redirect_to post_path(@post), notice: '変更を保存しました'
     else
-      render "edit"
+      render 'edit'
     end
   end
 
   def destroy
-    @post =  Post.find(params[:id])
+    @post = Post.find(params[:id])
     @post.destroy
     redirect_to posts_path
   end
 
-
   private
 
   def post_params
-    params.require(:post).permit(:member_id,:item_id,:brand_id,:image,:title,:rate,:merit,:demerit,:usability,:cost_performance,:pattern,:other,:tag_list)
+    params.require(:post).permit(:member_id, :item_id, :brand_id, :image, :title, :rate, :merit, :demerit, :usability,
+                                 :cost_performance, :pattern, :other, :tag_list)
   end
 
   def correct_member
     @post = Post.find(params[:id])
     @member = @post.member
-    redirect_to posts_path unless  @member == current_member
+    redirect_to posts_path unless @member == current_member
   end
 end

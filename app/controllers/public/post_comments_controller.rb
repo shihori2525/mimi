@@ -15,7 +15,7 @@ class Public::PostCommentsController < ApplicationController
   def destroy
     PostComment.find_by(id: params[:id], post_id: params[:post_id]).destroy
 
-    #renderしたときに@postのデータがないため記述
+    # renderしたときに@postのデータがないため記述
     @post = Post.find(params[:post_id])
     render :post_comments
   end
@@ -25,5 +25,4 @@ class Public::PostCommentsController < ApplicationController
   def post_comment_params
     params.require(:post_comment).permit(:comment)
   end
-
 end
